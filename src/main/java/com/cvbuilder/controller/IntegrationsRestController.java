@@ -29,8 +29,7 @@ public class IntegrationsRestController {
 
     @GetMapping(value = "/repos")
     private List<Object> getUsersRepos(String username) {
-        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.github.com/users/{username}/repos")
-                .build(username);
+        URI uri = UriComponentsBuilder.fromHttpUrl("https://api.github.com/users/{username}/repos").build(username);
         Object[] result = restTemplate.getForObject(uri, Object[].class);
         return result != null ? List.of(result) : null;
     }
